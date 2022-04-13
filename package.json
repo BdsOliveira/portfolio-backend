@@ -12,7 +12,6 @@
     "nodemon": "^2.0.15"
   },
   "dependencies": {
-    "express": "^4.17.3",
-    "firebase": "^9.6.10"
+    "express": "^4.17.3"
   }
 }

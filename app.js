@@ -10,6 +10,11 @@ app.get('/', (req, res) => {
     res.status(200).sendFile(__dirname + '/index.html');
 });
 
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://portfolio-projects-4f3d0-default-rtdb.firebaseio.com"
+});
+
 app.listen(port, () => {
     console.log(`Server is starting at port: ${port}`);
 })

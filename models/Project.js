@@ -1,5 +1,3 @@
-
-
 const projetos = [
     {
         gitHubLink: 'https://github.com/BdsOliveira/portfolio',
