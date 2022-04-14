@@ -1,7 +1,19 @@
 const router = require('express').Router();
 
-router.get('/', (req, res) => {
-    res.status(200).send('Funfou');
+const Project = require('../models/Project')
+
+// Get all portfolio projects from database
+router.get('/', async (req, res) => {
+    try {
+        const projects = await Project.find();
+        if (projects.length < 1) {
+            res.status(404).json({ message: 'Empty database' });
+            return;
+        }
+        res.status(200).json(projects);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 router.post('/', (req, res) => {
@@ -15,5 +27,5 @@ router.delete('/:id', (req, res) => {
 router.delete('/', (req, res) => {
     res.status(404).send("Can not found project without an ID");
 });
-
+    
 module.exports = router;

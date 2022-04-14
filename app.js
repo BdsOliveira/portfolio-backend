@@ -1,6 +1,6 @@
 // Express Init
 const express = require('express');
-const { default: mongoose } = require('mongoose');
+const mongoose = require('mongoose');
 const app = express();
 
 // Sensible data 
@@ -16,8 +16,7 @@ app.use('/projects', routerProjects)
 
 
 app.get('/', (req, res) => {
-    res.status(200).sendFile(__dirname + '/index.html');
-    res.json({ message: 'Funfou' });
+    res.status(200).sendFile(__dirname + '/views/index.html');
 });
 
 app.use(
@@ -32,6 +31,6 @@ app.listen(PORT, () => {
 // Connecting to database
 mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASSWORD}@projects-backend.8algy.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`)
 .then(() => {
-    console.log('Connecting to database');
+    console.log('Database connected sucessfully.');
 })
 .catch((err) => console.log(err))
