@@ -1,4 +1,17 @@
-const projetos = [
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://portfolio:portfolio@projects-backend.8algy.mongodb.net/projects-backend?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+console.log(client);
+client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+});
+
+
+
+
+/* const projetos = [
     {
         gitHubLink: 'https://github.com/BdsOliveira/portfolio',
         liveLink: 'https://portfolio-bdsoliveira.vercel.app/',
@@ -35,4 +48,4 @@ const projetos = [
         isVisible: true,
         id: 3
     }
-]
+] */

@@ -1,20 +1,17 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 5000;
+require('dotenv').config();
+const PORT = process.env.PORT;
+const routerProjects = require('./routes/projects');
 
-const router = require('./routes/projects');
+app.use('/projects', routerProjects)
 
-app.use(router);
 
 app.get('/', (req, res) => {
     res.status(200).sendFile(__dirname + '/index.html');
+    res.json({message: 'Funfou'});
 });
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://portfolio-projects-4f3d0-default-rtdb.firebaseio.com"
-});
-
-app.listen(port, () => {
-    console.log(`Server is starting at port: ${port}`);
+app.listen(PORT, () => {
+    console.log(`Server is starting at port: ${PORT}`);
 })

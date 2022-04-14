@@ -1,17 +1,24 @@
 const express = require('express');
+const { MongoKerberosError } = require('mongodb');
 
 const router = express.Router();
 
-router.get('/projects', (req, res) => {
-    res.send('Funfou');
+
+
+router.get('/', (req, res) => {
+    res.status(200).send('Funfou');
 });
 
-router.post('/projects', (req, res) => {
+router.post('/', (req, res) => {
     res.status(201).send('Project Created Sucessfuly');
 });
 
-router.delete('/projects', (req, res) => {
-    res.status(403).send("You don't have permission to delete file without an ID");
+router.delete('/:id', (req, res) => {
+    res.status(403).send("Can not found project with an ID provided");
+});
+
+router.delete('/', (req, res) => {
+    res.status(404).send("Can not found project without an ID");
 });
 
 module.exports = router;

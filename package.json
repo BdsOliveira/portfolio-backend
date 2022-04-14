@@ -4,14 +4,13 @@
   "description": "Backend of my Personal Portfolio Project. It serves to provide data from my projects to include in my Frontend Portfolio Project",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js"
   },
   "author": "Bruno Oliveira",
   "license": "ISC",
-  "devDependencies": {
-    "nodemon": "^2.0.15"
-  },
   "dependencies": {
-    "express": "^4.17.3"
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
   }
 }
