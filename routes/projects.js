@@ -16,8 +16,27 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.post('/', (req, res) => {
-    res.status(201).send('Project Created Sucessfuly');
+// Insert one portfolio project in database
+router.post('/', async (req, res) => {
+    const project = {
+        gitHubLink = req.body.gitHubLink,
+        liveLink = req.body.liveLink,
+        title = req.body.title,
+        description = req.body.description,
+        skillUsed1 = req.body.skillUsed1,
+        skillUsed2 = req.body.skillUsed2,
+        skillUsed3 = req.body.skillUsed3,
+        skillUsed4 = req.body.skillUsed4,
+        skillUsed5 = req.body.skillUsed5,
+        isVisible = req.body.isVisible,
+    } = req.body;
+
+    try {
+        await Project.create(project);
+        res.status(201).json({message: "Project Created Sucessfuly"});
+    } catch (error) {
+        res.status(403).json({ message: 'Not possible to create a project' });
+    }
 });
 
 router.delete('/:id', (req, res) => {
@@ -27,5 +46,5 @@ router.delete('/:id', (req, res) => {
 router.delete('/', (req, res) => {
     res.status(404).send("Can not found project without an ID");
 });
-    
-module.exports = router;
+
+module.exports = router; 
