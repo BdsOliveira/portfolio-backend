@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 
     try {
         await Project.create(project);
-        res.status(201).json({message: "Project Created Sucessfuly"});
+        res.status(201).json({ message: "Project Created Sucessfuly" });
     } catch (error) {
         res.status(403).json({ message: 'Not possible to create a project' });
     }
