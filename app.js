@@ -13,8 +13,8 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 //app.use(express.json());
 // Routing
 const router = express.Router();
-//const routerProjects = require('./routes/Projects');
-app.use('/projects', require('./routes/Projects'))
+const routerProjects = require('./routes/Projects');
+app.use('/projects', routerProjects)
 
 app.get('/', (req, res) => {
     res.status(200).sendFile(__dirname + '/views/index.html');
