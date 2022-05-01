@@ -12,7 +12,7 @@ const DB_PASSWORD = process.env.DB_PASSWORD;
 
 //app.use(express.json());
 // Routing
-const routerProjects = require('../routes/Projects');
+const routerProjects = require('./routes/Projects');
 app.use('/projects', routerProjects)
 
 app.get('/', (req, res) => {
