@@ -5,23 +5,20 @@ const app = express();
 
 // Sensible data 
 require('dotenv').config();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 const DB_NAME = process.env.DB_NAME;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 
 //app.use(express.json());
 // Routing
-const routerProjects = require('./routes/Projects');
-app.use('/projects', routerProjects)
+const router = express.Router();
+//const routerProjects = require('./routes/Projects');
+app.use('/projects', require('./routes/Projects'))
 
 app.get('/', (req, res) => {
     res.status(200).sendFile(__dirname + '/views/index.html');
 });
-/* app.use(
-    express.urlencoded({ extended: true }),
-); */
-
 
 // Setting a port Server
 app.listen(PORT, () => {
