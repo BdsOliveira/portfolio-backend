@@ -1,9 +1,13 @@
-const router = require('express').Router();
+import express from 'express';
 
-const Project = require('../models/Project')
+const projects = express.Router();
+
+// const Project = require('../models/Project')
 
 // Get all portfolio projects from database
-router.get('/', async (req, res) => {
+projects.get('/', async (req, res) => {
+    res.status(200).json("get all projects");
+    return
     try {
         const projects = await Project.find();
         if (projects.length < 1) {
@@ -17,7 +21,9 @@ router.get('/', async (req, res) => {
 });
 
 // Insert one portfolio project in database
-router.post('/', async (req, res) => {
+projects.post('/', async (req, res) => {
+    res.status(200).json("post project");
+    return
     const project = {
         gitHubLink = req.body.gitHubLink,
         liveLink = req.body.liveLink,
@@ -39,12 +45,17 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
-    res.status(403).send("Can not found project with an ID provided");
+projects.put('/:id', (req, res) => {
+    res.status(200).json("put project");
 });
 
-router.delete('/', (req, res) => {
-    res.status(404).send("Can not found project without an ID");
+projects.get('/:id', (req, res) => {
+    res.status(200).json(`get project ${req.params.id}`);
 });
 
-module.exports = router; 
+projects.delete('/', (req, res) => {
+    res.status(200).json("post project");
+});
+
+export default projects;
+// module.exports = projects; 
