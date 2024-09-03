@@ -58,4 +58,3 @@ projects.delete('/', (req, res) => {
 });
 
 export default projects;
-// module.exports = projects; 
