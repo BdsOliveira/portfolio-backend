@@ -13,3 +13,14 @@ const Project = mongoose.model('Project', {
     isVisible: Boolean
 })
 module.exports = Project;
+
+const newModel = {
+    title: String,
+    objective: String,
+    features: Array,
+    skills: Array,
+    images: Array,
+    github_url: String,
+    live_url: String,
+    is_visible: Boolean
+}
