@@ -1,12 +1,13 @@
-import express from 'express';
+import { Router } from 'express';
+import { ListProjectsFactory } from '../useCases/ListProjects/ListProjectsFactory';
 
-const projects = express.Router();
+const projects = Router();
 
 // const Project = require('../models/Project')
 
 // Get all portfolio projects from database
-projects.get('/', async (req, res) => {
-    res.status(200).json("get all projects");
+projects.get('/', new ListProjectsFactory().start);
+    // res.status(200).json("get all projects");
     // try {
     //     const projects = await Project.find();
     //     if (projects.length < 1) {
@@ -17,11 +18,11 @@ projects.get('/', async (req, res) => {
     // } catch (error) {
     //     res.status(500).json({ error: 'Internal Server Error' });
     // }
-});
+// });
 
 // Insert one portfolio project in database
-projects.post('/', async (req, res) => {
-    res.status(200).json("post project");
+// projects.post('/', async (req, res) => new CreateProjectController(new CreateProjectUseCase(new InMemoryProjectsRepository())).handle);
+    // res.status(200).json("post project");
     // const project = {
     //     gitHubLink = req.body.gitHubLink,
     //     liveLink = req.body.liveLink,
@@ -41,7 +42,7 @@ projects.post('/', async (req, res) => {
     // } catch (error) {
     //     res.status(403).json({ message: 'Not possible to create a project' });
     // }
-});
+// });
 
 projects.put('/:id', (req, res) => {
     res.status(200).json("put project");
@@ -51,8 +52,10 @@ projects.get('/:id', (req, res) => {
     res.status(200).json(`get project ${req.params.id}`);
 });
 
-projects.delete('/', (req, res) => {
-    res.status(200).json("post project");
+projects.delete('/:id', (req, res) => {
+    res.status(200).json("delete project");
 });
 
-export default projects;
+export {
+    projects
+};

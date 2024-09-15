@@ -6,13 +6,13 @@ export class CreateProjectController {
         private createProjectUseCase: CreateProjectUseCase
     ) { }
 
-    async handle(request: Request, response: Response): Promise<Response> {
-        const { title, objective, features, skills, images, github_url, live_url, is_visible } = request.body;
+    async handle(req: Request, res: Response): Promise<Response> {
+        const { title, objective, features, skills, images, github_url, live_url, is_visible } = req.body;
 
         await this.createProjectUseCase.execute({
             title, objective, features, skills, images, github_url, live_url, is_visible
         });
 
-        return response.status(201).send();
+        return res.status(201).send();
     }
 }

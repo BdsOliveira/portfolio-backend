@@ -8,8 +8,8 @@ export class CreateProjectUseCase {
     ) {
     }
 
-    async execute(data: CreateProjectDTOInterface) {
+    async execute(data: CreateProjectDTOInterface): Promise<Project> {
         const project = new Project(data);
-        await this.projectRepository.save(project);
+        return await this.projectRepository.save(project);
     }
 }

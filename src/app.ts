@@ -1,17 +1,17 @@
 import express from 'express';
-// import 'dotenv/config';
-// import cors from 'cors';
-import registerRoutes from './routes/index.js';
-// import corsOptions from './../config/cors.js'
+import { registerRoutes } from './routes/index';
 
 const app = express();
-// app.use(cors(corsOptions));
 
 app.use(express.json());
 registerRoutes(app)
 
 export { app }
 
+// import 'dotenv/config';
+// import cors from 'cors';
+// import corsOptions from './../config/cors.js'
+// app.use(cors(corsOptions));
 // Sensible data 
 // const PORT = process.env.PORT || 3000;
 // const DB_NAME = process.env.DB_NAME;

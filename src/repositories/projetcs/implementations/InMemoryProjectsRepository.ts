@@ -1,5 +1,5 @@
-import { Project } from "../../entities/Project";
-import { ProjectRepositoryInterface } from "./ProjectRepositoryInterface";
+import { Project } from "../../../entities/Project";
+import { ProjectRepositoryInterface } from "./../ProjectRepositoryInterface";
 
 export class InMemoryProjectsRepository implements ProjectRepositoryInterface {
     findByid(id: string): Promise<Project> {
