@@ -4,7 +4,7 @@
   "description": "Backend of my Personal Portfolio Project. It serves to provide data of my projects to include in my Frontend Portfolio Project",
   "main": "app.js",
   "engines": {
-    "node": ">= 20.15.0"
+    "node": ">= 20.14.0"
   },
   "scripts": {
     "dev": "ts-node src/server.ts",
