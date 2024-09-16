@@ -1,17 +1,17 @@
 import { Request, Response } from "express";
 import { ActualRepository } from "../../../config/ActualRepository";
-import { ListProjectsController } from "./ListProjectsController";
-import { ListProjectsUseCase } from "./ListProjectsUseCase";
+import { FindProjectController } from "./FindProjectController";
+import { FindProjectUseCase } from "./FindProjectUseCase";
 
-export class ListProjectsFactory {
+export class FindProjectFactory {
   private repository: ActualRepository;
-  private useCase: ListProjectsUseCase;
-  private controller: ListProjectsController;
+  private useCase: FindProjectUseCase;
+  private controller: FindProjectController;
 
   constructor() {
     this.repository = new ActualRepository();
-    this.useCase = new ListProjectsUseCase(this.repository);
-    this.controller = new ListProjectsController(this.useCase);
+    this.useCase = new FindProjectUseCase(this.repository);
+    this.controller = new FindProjectController(this.useCase);
 
     this.start = this.start.bind(this);
   }

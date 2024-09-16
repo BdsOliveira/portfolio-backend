@@ -1,7 +1,7 @@
 import { uuid } from "uuidv4";
 
 export class Project {
-    private readonly id?: string;
+    readonly id?: string;
     private title: string;
     private objective: string;
     private features: string[];

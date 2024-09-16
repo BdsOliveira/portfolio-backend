@@ -3,12 +3,9 @@ import { ProjectRepositoryInterface } from "../../repositories/projetcs/ProjectR
 import { ListProjectsDTOInterface } from "./ListProjectsDTO";
 
 export class ListProjectsUseCase {
-    constructor(
-        private projectRepository: ProjectRepositoryInterface
-    ) {
-    }
+  constructor(private projectRepository: ProjectRepositoryInterface) {}
 
-    async execute(data: ListProjectsDTOInterface): Promise<Project[]> {
-        return await this.projectRepository.getAllProjects(data);
-    }
+  async execute(data: ListProjectsDTOInterface): Promise<Project[]> {
+    return await this.projectRepository.getAllProjects(data);
+  }
 }
