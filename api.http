@@ -1,0 +1,24 @@
+GET http://localhost:4000/projects
+content-type: application/json
+Accept: application/json
+
+###
+GET http://localhost:4000/projects/ab53fb37-87a8-4eec-9419-19e9c7c1804b
+content-type: application/json
+Accept: application/json
+
+###
+POST http://localhost:4000/projects
+content-type: application/json
+Accept: application/json
+
+{
+    "title": "Project Number 1",
+    "objective": "Objective Number 1",
+    "unexisting_property": "value",
+    "features": ["Feature Number 1"],
+    "skills": "",
+    "images": "Image Number 1",
+    "github_url": "Github URL",
+    "live_url": "Live URL"
+}

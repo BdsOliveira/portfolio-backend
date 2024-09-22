@@ -1,55 +1,53 @@
 import { Project } from "../../entities/Project";
 import { ProjectRepositoryInterface } from "../../repositories/projetcs/ProjectRepositoryInterface";
-import { CreateProjectDTOInterface } from "./CreateProjectDTO";
+import { CreateProjectDTO, CreateProjectDTOType } from "./CreateProjectDTO";
 
 export class CreateProjectUseCase {
-  constructor(private projectRepository: ProjectRepositoryInterface) {}
+  constructor(private projectRepository: ProjectRepositoryInterface) { }
 
-  async execute(data: CreateProjectDTOInterface): Promise<Project> {
-    const {
-      title,
-      objective,
-      features,
-      skills,
-      images,
-      github_url,
-      live_url,
-      is_visible,
-    } = data;
+  async execute(data: CreateProjectDTOType): Promise<Project> {
+    const projectDTO: CreateProjectDTO = new CreateProjectDTO(data);
+    console.log(projectDTO);
 
-    if (!title) {
+    for (const key in projectDTO) {
+      if (Object.prototype.hasOwnProperty.call(projectDTO, key)) {
+        console.log("key", key, projectDTO[key], "type", typeof projectDTO[key]);        
+      }
+    }
+    
+    if (!projectDTO.title) {
       throw new MissingParameterError("title");
     }
 
-    if (!objective) {
+    if (!projectDTO.objective) {
       throw new MissingParameterError("objective");
     }
 
-    if (!features) {
+    if (!projectDTO.features) {
       throw new MissingParameterError("features");
     }
 
-    if (!skills) {
+    if (!projectDTO.skills) {
       throw new MissingParameterError("skills");
     }
 
-    if (!images) {
+    if (!projectDTO.images) {
       throw new MissingParameterError("images");
     }
 
-    if (!github_url) {
+    if (!projectDTO.github_url) {
       throw new MissingParameterError("github_url");
     }
 
-    if (!live_url) {
+    if (!projectDTO.live_url) {
       throw new MissingParameterError("live_url");
     }
 
-    if (!is_visible) {
+    if (!projectDTO.is_visible) {
       data.is_visible = true;
     }
 
-    const project = new Project(data);
+    const project = new Project(projectDTO);
     return await this.projectRepository.save(project);
   }
 }

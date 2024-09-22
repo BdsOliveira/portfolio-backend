@@ -3,17 +3,16 @@ import {
   CreateProjectUseCase,
   MissingParameterError,
 } from "./CreateProjectUseCase";
-import { CreateProjectDTOInterface } from "./CreateProjectDTO";
+import { CreateProjectDTOType } from "./CreateProjectDTO";
 
 export class CreateProjectController {
   constructor(private createProjectUseCase: CreateProjectUseCase) {}
 
   async handle(req: Request, res: Response): Promise<Response> {
-    const data: CreateProjectDTOInterface = { ...req.body };
-    console.log(data);
+    const project: CreateProjectDTOType = { ...req.body };
 
     try {
-      return res.status(201).json(await this.createProjectUseCase.execute(data));
+      return res.status(201).json(await this.createProjectUseCase.execute(project));
     } catch (error: any) {
       if (error instanceof MissingParameterError) {
         return res.status(400).json({ error: error.message });
