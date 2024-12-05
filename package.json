@@ -1,17 +1,29 @@
 {
   "name": "portfolio-backend",
-  "version": "1.0.0",
-  "description": "Backend of my Personal Portfolio Project. It serves to provide data from my projects to include in my Frontend Portfolio Project",
+  "version": "2.0.0",
+  "description": "Backend of my Personal Portfolio Project. It serves to provide data of my projects to include in my Frontend Portfolio Project",
   "main": "app.js",
+  "engines": {
+    "node": ">= 20.14.0"
+  },
   "scripts": {
-    "start": "node app.js"
+    "dev": "ts-node src/server.ts",
+    "start": "tsnd --transpile-only --respawn --ignore-watch node_modules src/server.ts"
   },
   "author": "Bruno Oliveira",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^16.0.0",
-    "express": "^4.17.3",
-    "mongoose": "^6.3.0",
-    "nodemon": "^2.0.16"
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "uuidv4": "^6.2.13"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^22.5.5",
+    "standard": "^17.1.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.2"
   }
 }
